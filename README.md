@@ -1,27 +1,18 @@
-Coffee Shop Sales Analysis: A Case Study in Business Intelligence
-
-Project Overview
-This project presents an end-to-end data analytics workflow utilizing a year-long dataset from a retail coffee environment, spanning from March 2024 through March 2025. The analysis was conducted to transform a raw transaction log of 3,547 records into a series of actionable business recommendations. By integrating SQL for data extraction and Python for preprocessing, the project culminates in a multi-page interactive dashboard designed to support executive decision-making.
-
-Strategic Findings
-The analysis identified a significant discrepancy between product popularity and profitability. While the Americano with Milk was identified as the highest-volume product, the Latte was determined to be the primary driver of both total revenue and net profit. This suggests that current consumer trends naturally favor the Americano, whereas business growth should be targeted toward the Latte through strategic promotion.
-
-Operational data revealed consistent peaks in traffic at 10:00 AM and 4:00 PM, with revenue distribution remaining remarkably balanced across morning, afternoon, and evening shifts. Notably, Tuesday was identified as the highest-grossing day of the week, outperforming both the Monday morning rush and weekend sales. Conversely, Hot Chocolate was noted as a consistent underperformer across all key performance indicators, suggesting a need for menu re-evaluation.
-
-Technical Methodology
-The technical framework was divided into three distinct phases: data engineering, database management, and visualization.
-
-Data Engineering and Preprocessing
-Initial data health checks were performed using Python and the Pandas library. A critical sorting issue was identified where the original dataset utilized a month-only index (1-12) without year attribution. Because the data spanned two calendar years, this structure caused chronological overlapping. The data was re-engineered into a YYYYMM format to ensure accurate time-series analysis. Additionally, hidden non-breaking space characters in the schema—common in web-scraped data—were identified and sanitized to ensure code stability.
-
-Database Management
-Following the cleaning process, the data was hosted in a MariaDB environment. Business-specific queries were executed using DBeaver to perform complex aggregations. The SQL workflow utilized Common Table Expressions (CTEs), window functions, and case statements to calculate advanced metrics such as month-over-month growth and profit margins per unit.
-
-Visualization and Dashboard Design
-The final deliverable was constructed in Google Looker Studio, organized into three functional reporting pages:
-1. Business Summary: High-level revenue trends and transaction volume.
-2. Menu Performance: Comparative analysis of product profitability versus volume.
-3. Sales Distribution: Operational insights into time-of-day and day-of-week trends.
-
-Conclusion
-This project demonstrates the transition from raw data collection to professional business intelligence. The methodology prioritizes analytical reasoning over simple reporting, ensuring that every visualization serves a specific operational purpose. By providing two versions of the final report—a standard dashboard and an insight-led executive summary—the project highlights the value of the analyst in interpreting data for real-world application.
+Coffee Shop Sales Analysis: From Raw Data to Business Insights
+Overview
+This project is an end-to-end data analytics case study using a year of real coffee shop transaction data, from March 2024 to March 2025. Starting from a raw CSV file with 3,547 records, I cleaned the data, ran business queries in SQL, and built a three-page interactive dashboard — all driven by actual business questions rather than textbook exercises.
+Note: The cost-to-make values used in the profit analysis were created for the purpose of this exercise and do not reflect the actual costs of the real coffee shop. They were introduced specifically to practice JOIN operations, profit calculations, and multi-metric analysis. All revenue figures are from the original dataset and are real.
+What I Found
+The most interesting finding was that the most ordered coffee is not the most profitable one. Americano with Milk leads in order volume, but Latte generates more revenue and more profit after subtracting the cost to make each drink. If the owner's goal is profit, the data says promote Latte — not the drink customers already default to.
+Hot Chocolate fails every cut of the data. Low orders, low revenue, low profit. The recommendation is to investigate before investing in promotion, or consider pulling it from the menu entirely.
+On the operations side, 10AM is the peak hour with a secondary spike at 4PM. Revenue is evenly split across morning, afternoon, and evening shifts — meaning consistent staffing makes more sense than concentrating staff during one period. Tuesday is the highest-grossing day of the week, which is a non-obvious finding worth the owner's attention.
+How I Built It
+I started with a health check in Python before touching anything else. The dataset had a subtle but critical issue — the month sorting column tracked month numbers without year, making chronological charts impossible across two calendar years. I corrected this before loading anything into the dashboard. Column headers also contained hidden non-breaking space characters from the original data source, which broke column matching in code. Both were fixed and documented.
+Business analysis was done in SQL through DBeaver connected to a local MariaDB database. Queries covered aggregations, JOINs, subqueries, CTEs, CASE statements, and window functions — each one tied to a real business question about the coffee shop.
+The dashboard was built in Google Looker Studio across three pages. Business overview on page one, menu item performance on page two, and sales distribution on page three. Two versions of the final report exist — a clean data version and an insight-led version with observations and recommendations.
+Tools Used
+SQL through MariaDB and DBeaver, Python with Pandas, Google Looker Studio, Google Sheets
+Dashboard
+View the interactive dashboard here: [paste Looker Studio link]
+About
+Computer Science student in the Philippines, building toward entry-level data analyst roles. My approach is business reasoning first — I use AI for syntax and focus my energy on interpreting what the numbers actually mean for real decisions.
