@@ -30,7 +30,7 @@ SQL through MariaDB and DBeaver, Python with Pandas, Google Looker Studio, Googl
 
 Dashboard
 
-View the interactive dashboard here: [paste Looker Studio link]
+View the interactive dashboard here: [https://datastudio.google.com/reporting/46c35229-e39f-4769-bd7c-0f24d4d13bfd]
 
 About
 
