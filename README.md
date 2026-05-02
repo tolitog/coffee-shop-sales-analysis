@@ -1,39 +1,48 @@
-Coffee Shop Sales Analysis: From Raw Data to Business Insights
+# Coffee Shop Sales Analysis: From Raw Data to Business Insights
 
-Overview
+## Dashboard Preview
 
-This project is an end-to-end data analytics case study using a year of real coffee shop transaction data, from March 2024 to March 2025. Starting from a raw CSV file with 3,547 records, I cleaned the data, ran business queries in SQL, and built a three-page interactive dashboard — all driven by actual business questions rather than textbook exercises.
+![Dashboard 1](DASHBOARD%201.png)
+![Dashboard 2](DASHBOARD%202.png)
+![Dashboard 3](DASHBOARD%203.png)
 
-Note: The cost-to-make values used in the profit analysis were created for the purpose of this exercise and do not reflect the actual costs of the real coffee shop. They were introduced specifically to practice JOIN operations, profit calculations, and multi-metric analysis. All revenue figures are from the original dataset and are real.
+## Overview
 
-What I Found
+This project is an end-to-end data analytics case study using a year of real coffee shop transaction data, from March 2024 to March 2025. Starting from a raw CSV file with 3,547 records, I cleaned the data in Python, analyzed it in SQL, and visualized the results in Google Looker Studio.
 
-The most interesting finding was that the most ordered coffee is not the most profitable one. Americano with Milk leads in order volume, but Latte generates more revenue and more profit after subtracting the cost to make each drink. If the owner's goal is profit, the data says promote Latte — not the drink customers already default to.
+Note: The cost-to-make values used in the profit analysis were created for the purpose of this exercise and do not reflect the actual costs of the real coffee shop. They were introduced specifically to demonstrate how profitability differs from order volume.
+
+## What I Found
+
+The most interesting finding was that the most ordered coffee is not the most profitable one. Americano with Milk leads in order volume, but Latte generates more revenue and more profit after subtracting costs.
 
 Hot Chocolate fails every cut of the data. Low orders, low revenue, low profit. The recommendation is to investigate before investing in promotion, or consider pulling it from the menu entirely.
 
-On the operations side, 10AM is the peak hour with a secondary spike at 4PM. Revenue is evenly split across morning, afternoon, and evening shifts — meaning consistent staffing makes more sense than concentrating staff during one period. Tuesday is the highest-grossing day of the week, which is a non-obvious finding worth the owner's attention.
+On the operations side, 10AM is the peak hour with a secondary spike at 4PM. Revenue is evenly split across morning, afternoon, and evening shifts — meaning consistent staffing makes more sense than skewing toward any one daypart.
 
-How I Built It
+## How I Built It
 
-I started with a health check in Python before touching anything else. The dataset had a subtle but critical issue — the month sorting column tracked month numbers without year, making chronological charts impossible across two calendar years. I corrected this before loading anything into the dashboard. Column headers also contained hidden non-breaking space characters from the original data source, which broke column matching in code. Both were fixed and documented.
+I started with a health check in Python before touching anything else. The dataset had a subtle but critical issue — the month sorting column tracked month numbers without year, making chronological order impossible until I fixed it. That's why I always verify before analyzing.
 
-Business analysis was done in SQL through DBeaver connected to a local MariaDB database. Queries covered aggregations, JOINs, subqueries, CTEs, CASE statements, and window functions — each one tied to a real business question about the coffee shop. All ten queries are available in the sql_queries folder.
+Business analysis was done in SQL through DBeaver connected to a local MariaDB database. Queries covered aggregations, JOINs, subqueries, CTEs, CASE statements, and window functions — each one tied to a real business question.
 
-The dashboard was built in Google Looker Studio across three pages. Business overview on page one, menu item performance on page two, and sales distribution on page three. Two versions of the final report exist — a clean data version and an insight-led version with observations and recommendations.
+The dashboard was built in Google Looker Studio across three pages. Business overview on page one, menu item performance on page two, and sales distribution on page three. Two versions of the final numbers exist because I caught an error halfway through and corrected it retroactively.
 
-How the Data Reaches the Dashboard
+## How the Data Reaches the Dashboard
 
-After cleaning in Python, the final dataset was exported as a CSV and uploaded to Google Sheets. Looker Studio was then connected directly to that Sheets file as its data source. This setup was a deliberate choice: Google Sheets acts as a lightweight but reliable bridge between local analysis work and a live, shareable dashboard. Because Looker Studio reads from the sheet in real time, any update to the underlying data would automatically refresh all charts and metrics in the dashboard without rebuilding anything. For a solo analyst working without a cloud database or server, this is a practical and production-aware architecture — it separates the cleaning layer from the presentation layer cleanly and keeps both stages auditable.
+After cleaning in Python, the final dataset was exported as a CSV and uploaded to Google Sheets. Looker Studio was then connected directly to that Sheets file as its data source. This setup was a practical choice — it keeps the source of truth in one place and makes updates simple.
 
-Tools Used
+## Tools Used
 
-SQL through MariaDB and DBeaver, Python with Pandas, Google Looker Studio, Google Sheets
+- **SQL** through MariaDB and DBeaver
+- **Python** with Pandas
+- **Google Looker Studio** for dashboards
+- **Google Sheets** for data storage
 
-Dashboard
+## Dashboard
 
-View the interactive dashboard here: https://datastudio.google.com/reporting/46c35229-e39f-4769-bd7c-0f24d4d13bfd
+**View the interactive dashboard here:** https://datastudio.google.com/reporting/46c35229-e39f-4769-bd7c-0f24d4d13bfd
 
-About
+## About
 
-Computer Science student in the Philippines, building toward entry-level data analyst roles. My approach is business reasoning first — I use AI for syntax and focus my energy on interpreting what the numbers actually mean for real decisions.
+Computer Science student in the Philippines, building toward entry-level data analyst roles. My approach is business reasoning first — I use AI for syntax and focus my energy on interpreting what the data is actually telling me about the business.
