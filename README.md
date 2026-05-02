@@ -1,5 +1,3 @@
-
-
 Coffee Shop Sales Analysis: From Raw Data to Business Insights
 
 Overview
@@ -20,9 +18,13 @@ How I Built It
 
 I started with a health check in Python before touching anything else. The dataset had a subtle but critical issue — the month sorting column tracked month numbers without year, making chronological charts impossible across two calendar years. I corrected this before loading anything into the dashboard. Column headers also contained hidden non-breaking space characters from the original data source, which broke column matching in code. Both were fixed and documented.
 
-Business analysis was done in SQL through DBeaver connected to a local MariaDB database. Queries covered aggregations, JOINs, subqueries, CTEs, CASE statements, and window functions — each one tied to a real business question about the coffee shop.
+Business analysis was done in SQL through DBeaver connected to a local MariaDB database. Queries covered aggregations, JOINs, subqueries, CTEs, CASE statements, and window functions — each one tied to a real business question about the coffee shop. All ten queries are available in the sql_queries folder.
 
 The dashboard was built in Google Looker Studio across three pages. Business overview on page one, menu item performance on page two, and sales distribution on page three. Two versions of the final report exist — a clean data version and an insight-led version with observations and recommendations.
+
+How the Data Reaches the Dashboard
+
+After cleaning in Python, the final dataset was exported as a CSV and uploaded to Google Sheets. Looker Studio was then connected directly to that Sheets file as its data source. This setup was a deliberate choice: Google Sheets acts as a lightweight but reliable bridge between local analysis work and a live, shareable dashboard. Because Looker Studio reads from the sheet in real time, any update to the underlying data would automatically refresh all charts and metrics in the dashboard without rebuilding anything. For a solo analyst working without a cloud database or server, this is a practical and production-aware architecture — it separates the cleaning layer from the presentation layer cleanly and keeps both stages auditable.
 
 Tools Used
 
